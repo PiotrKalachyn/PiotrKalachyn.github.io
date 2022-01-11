@@ -1,0 +1,53 @@
+<html>
+
+<head>
+  <title>Timesheet generator</title>
+  <script src="timesheet.js"></script>
+  <style>
+    .results {
+      display: flex;
+      max-width: 20em;
+    }
+
+    .results > div {
+      flex: 1;
+    }
+
+    label, button {
+      display: inline-block;
+      margin-bottom: 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Timesheet generator</h1>
+  <form>
+    <label>Quarter
+      1<input type="radio" name="startMonth" value="1" checked onchange="timesheetGenerator.setMonth(this.value)">
+      2<input type="radio" name="startMonth" value="4" onchange="timesheetGenerator.setMonth(this.value)">
+      3<input type="radio" name="startMonth" value="7" onchange="timesheetGenerator.setMonth(this.value)">
+      4<input type="radio" name="startMonth" value="10" onchange="timesheetGenerator.setMonth(this.value)">
+    </label>
+
+    <br>
+
+    <label>Year
+      <input type="number" name="year" value="2022" onchange="timesheetGenerator.setYear(this.value)">
+      <script>
+        timesheetGenerator.setMonth(1);
+        timesheetGenerator.setYear();
+      </script>
+    </label>
+
+    <br>
+
+    <button type="button" onclick="showRandomDays()">Generate</button>
+    <div class="results">
+      <div id="dates"></div>
+      <div id="hours"></div>
+    </div>
+  </form>
+</body>
+
+</html>
